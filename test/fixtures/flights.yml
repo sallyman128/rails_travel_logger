@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  flight_number: MyString
+  departure_time: 2024-05-30 19:42:36
+  arrival_time: 2024-05-30 19:42:36
+  origin: MyString
+  destination: MyString
+
+two:
+  flight_number: MyString
+  departure_time: 2024-05-30 19:42:36
+  arrival_time: 2024-05-30 19:42:36
+  origin: MyString
+  destination: MyString
