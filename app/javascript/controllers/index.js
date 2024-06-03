@@ -6,6 +6,10 @@ import { application } from "controllers/application"
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
 eagerLoadControllersFrom("controllers", application)
 
+import { definitionsFromContext } from "@hotwired/stimulus-loading"
+const context = require.context("controllers", true, /_controller\.js$/)
+application.load(definitionsFromContext(context))
+
 // Lazy load controllers as they appear in the DOM (remember not to preload controllers in import map!)
 // import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
 // lazyLoadControllersFrom("controllers", application)
