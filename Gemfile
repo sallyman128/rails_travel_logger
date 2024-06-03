@@ -44,7 +44,7 @@ gem "bootsnap", require: false
 # Use Devise to setup login and signup feature
 gem 'devise'
 
-gem 'bootstrap', '~> 5.0.0'
+gem 'bootstrap', '~> 5.0.2'
 gem 'jquery-rails'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
