@@ -2,22 +2,51 @@
 
 // Ensure the logout link looks like other nav links
 .navbar-nav {
-    .logout-link {
-      color: $navbar-light-color;
-      cursor: pointer;
-      padding: 0.5rem 1rem;
-      text-decoration: none;
-      
-      &:hover,
-      &:focus {
-        color: darken($navbar-light-color, 15%);
-        text-decoration: none;
-      }
-    }
-  }
+	.logout-link {
+		color: $navbar-light-color;
+		cursor: pointer;
+		padding: 0.5rem 1rem;
+		text-decoration: none;
+		
+		&:hover,
+		&:focus {
+		color: darken($navbar-light-color, 15%);
+		text-decoration: none;
+		}
+	}
+}
   
-  // Add padding around the application
-  body {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+// Add padding around the application
+body {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+// Custom styles for the itinerary cards
+.card {
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	transition: all 0.3s ease;
+	text-decoration: none;
+	color: inherit;
+
+	&:hover {
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+}
+
+.card-title {
+	color: black;
+}
+
+.card-link {
+	text-decoration: none;
+
+	&:hover .card {
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+}
+
+.btn-primary {
+	margin-bottom: 20px;
+}
