@@ -1,15 +1,15 @@
-<div id="<%= dom_id itinerary %>">
-  <p>
+<div id="<%= dom_id itinerary %>" class="container list-group list-group-horizontal" style="width: 100%;">
+  <p class="list-group-item">
     <strong>Name:</strong>
     <%= itinerary.name %>
   </p>
 
-  <p>
+  <p class="list-group-item">
     <strong>User:</strong>
     <%= itinerary.user_id %>
   </p>
 
-  <p>
+  <p class="list-group-item">
     <strong>Flights:</strong>
     <%= itinerary.flights.size %>
   </p>
