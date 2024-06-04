@@ -22,6 +22,8 @@ class ItinerariesController < ApplicationController
   # POST /itineraries or /itineraries.json
   def create
     @itinerary = Itinerary.new(itinerary_params)
+    @itinerary.user = current_user
+    # raise @itinerary
 
     respond_to do |format|
       if @itinerary.save
