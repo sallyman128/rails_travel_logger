@@ -11,20 +11,20 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <%= link_to 'RailsTravelLogger', root_path, class: 'navbar-brand' %>
-    <div id="navbarNav">
-      <ul class="navbar-nav ml-auto">
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <%= link_to 'RailsTravelLogger', root_path, class: 'navbar-brand' %>
+      <div class="d-flex">
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to 'Profile', edit_user_registration_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Itineraries', itineraries_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item d-flex">
-            <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link btn btn-link logout-link' %>
-          </li>
+          <span class="nav-item nav-link">
+            <%= link_to 'Profile', edit_user_registration_path %>
+          </span>
+          <span class="nav-item nav-link">
+            <%= link_to 'Itineraries', itineraries_path %>
+          </span>
+          <span class="nav-item">
+            <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn-primary" %>
+          </span>
         <% else %>
           <li class="nav-item">
             <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
@@ -33,7 +33,7 @@
             <%= link_to 'Login', new_user_session_path, class: 'nav-link' %>
           </li>
         <% end %>
-      </ul>
+      </div>
     </div>
   </nav>
 
