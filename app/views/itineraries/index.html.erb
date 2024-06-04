@@ -1,14 +1,25 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Itineraries</h1>
 
-<div id="itineraries">
-  <% @itineraries.each do |itinerary| %>
-    <%= render itinerary %>
-    <p>
-      <%= link_to "Show this itinerary", itinerary %>
-    </p>
-  <% end %>
-</div>
+<%= link_to "New itinerary", new_itinerary_path, class: 'btn btn-primary mb-4' %>
 
-<%= link_to "New itinerary", new_itinerary_path %>
+<div class="container mt-4">
+  <div class="row">
+    <% @itineraries.each_with_index do |itinerary, index| %>
+      <div class="col-12 mb-4">
+        <%= link_to itinerary_path(itinerary), class: 'card-link' do %>
+          <div class="card w-100" style="background-color: <%= generate_light_color(index) %>;">
+            <div class="card-body d-flex justify-content-between align-items-center">
+              <div>
+                <h5 class="card-title mb-0"><%= itinerary.name %></h5>
+              </div>
+              <div class="text-right">
+                <small class="text-muted">Start Date: TODO</small>
+                <small class="text-muted ml-3">End Date: TODO</small>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
