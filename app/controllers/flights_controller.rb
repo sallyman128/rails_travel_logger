@@ -1,5 +1,6 @@
 class FlightsController < ApplicationController
   before_action :set_flight, only: %i[ show edit update destroy ]
+  before_action :set_itinerary, only: %i[ new create ]
 
   # GET /flights or /flights.json
   def index
@@ -12,7 +13,7 @@ class FlightsController < ApplicationController
 
   # GET /flights/new
   def new
-    @flight = Flight.new
+    @flight = @itinerary.flights.build
   end
 
   # GET /flights/1/edit
@@ -21,11 +22,12 @@ class FlightsController < ApplicationController
 
   # POST /flights or /flights.json
   def create
-    @flight = Flight.new(flight_params)
+    @flight = @itinerary.flights.build(flight_params)
+    @flight.user_id = @itinerary.user_id
 
     respond_to do |format|
       if @flight.save
-        format.html { redirect_to flight_url(@flight), notice: "Flight was successfully created." }
+        format.html { redirect_to itinerary_url(@itinerary), notice: "Flight was successfully created." }
         format.json { render :show, status: :created, location: @flight }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -66,5 +68,9 @@ class FlightsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def flight_params
       params.require(:flight).permit(:flight_number, :departure_time, :arrival_time, :origin, :destination)
+    end
+
+    def set_itinerary
+      @itinerary = Itinerary.find(params[:itinerary_id])
     end
 end
