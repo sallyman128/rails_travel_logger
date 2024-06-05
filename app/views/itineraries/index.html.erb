@@ -12,9 +12,9 @@
               <div>
                 <h5 class="card-title mb-0"><%= itinerary.name %></h5>
               </div>
-              <div class="text-right">
-                <small class="text-muted">Start Date: <%= itinerary.start_date %></small>
-                <small class="text-muted ml-3">End Date: <%= itinerary.end_date %></small>
+              <div class="d-flex flex-column align-items-end">
+                <small class="text-muted">Start Date: <%= itinerary.start_date.strftime('%B %d, %Y') %></small>
+                <small class="text-muted">End Date: <%= itinerary.end_date.strftime('%B %d, %Y') %></small>
               </div>
             </div>
           </div>
