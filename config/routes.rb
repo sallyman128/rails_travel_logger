@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'home/index'
   devise_for :users
   resources :itineraries do
-    resources :flights, only: [:new, :create, :edit, :update, :destroy]
+    resources :flights
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
