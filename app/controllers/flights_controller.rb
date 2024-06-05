@@ -1,6 +1,6 @@
 class FlightsController < ApplicationController
   before_action :set_flight, only: %i[ show edit update destroy ]
-  before_action :set_itinerary, only: %i[ new create ]
+  before_action :set_itinerary, only: %i[ new create edit update]
 
   # GET /flights or /flights.json
   def index
@@ -40,7 +40,7 @@ class FlightsController < ApplicationController
   def update
     respond_to do |format|
       if @flight.update(flight_params)
-        format.html { redirect_to flight_url(@flight), notice: "Flight was successfully updated." }
+        format.html { redirect_to itinerary_flight_url(@itinerary, @flight), notice: "Flight was successfully updated." }
         format.json { render :show, status: :ok, location: @flight }
       else
         format.html { render :edit, status: :unprocessable_entity }
