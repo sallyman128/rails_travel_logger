@@ -1,8 +1,7 @@
 <%= render @flight %>
 
 <div>
-  <%= link_to "Edit this flight", edit_itinerary_flight_path(@flight) %> |
+  <%= link_to "Edit this flight", edit_itinerary_flight_path(@flight.itinerary, @flight) %> |
   <%= link_to "Back to itinerary", itinerary_path(@flight.itinerary) %>
-
   <%= button_to "Destroy this flight", itinerary_flight_path(@flight), method: :delete %>
 </div>
