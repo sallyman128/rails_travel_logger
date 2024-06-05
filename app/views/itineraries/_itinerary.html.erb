@@ -1,14 +1,13 @@
 <div id="<%= dom_id(@itinerary) %>" class="container">
-  <div class="list-group list-group-horizontal" style="width: 100%;">
-    <p class="list-group-item">
-      <strong>Name:</strong>
+  <div style="width: 100%;">
+    <h1 class="display-1">
       <%= @itinerary.name %>
-    </p>
+    </h1>
 
-    <p class="list-group-item">
+    <h6>
       <strong>Flights:</strong>
       <%= @itinerary.flights.size %>
-    </p>
+    </h6>
   </div>
 
   <%= link_to "Add flights", new_itinerary_flight_path(@itinerary), class: "btn btn-primary mb-4" %>
