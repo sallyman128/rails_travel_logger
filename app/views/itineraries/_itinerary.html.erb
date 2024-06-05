@@ -12,18 +12,27 @@
 
   <%= link_to "Add flights", new_itinerary_flight_path(@itinerary), class: "btn btn-primary mb-4" %>
 
-  <div class="list-group mt-3">
+<div class="container mt-4">
+  <div class="row">
     <% @itinerary.flights.each_with_index do |flight, index| %>
-      <div class="list-group-item" style="background-color: <%= generate_light_color(index) %>;">
-        <div class="d-flex justify-content-between">
-          <div>
-            <p><strong>Flight Number:</strong> <%= flight.flight_number %></p>
+      <div class="col-12 mb-4">
+        <%= link_to itinerary_flight_path(flight), class: 'card-link' do %>
+          <div class="card w-100" style="background-color: <%= generate_light_color(index) %>;">
+            <div class="card-body d-flex justify-content-between align-items-center">
+              <div class="d-flex flex-column align-items-start">
+                <h5 class="card-title mb-0"><%= flight.flight_number %></h5>
+              </div>
+              <div class="d-flex flex-column align-items-center">
+                <small class="text-muted">Origin: <%= flight.origin %></small>
+                <small class="text-muted">Departure: <%= flight.destination %></small>
+              </div>
+              <div class="d-flex flex-column align-items-end">
+                <small class="text-muted">Departure: <%= flight.departure_time.strftime('%B %d, %Y') %></small>
+                <small class="text-muted">Arrival: <%= flight.arrival_time.strftime('%B %d, %Y') %></small>
+              </div>
+            </div>
           </div>
-          <div>
-            <p><strong>Departure:</strong> <%= flight.departure_time.strftime('%B %d, %Y') %></p>
-            <p><strong>Arrival:</strong> <%= flight.arrival_time.strftime('%B %d, %Y') %></p>
-          </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>
