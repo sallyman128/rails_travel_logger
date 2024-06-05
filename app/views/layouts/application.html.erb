@@ -49,6 +49,20 @@
     </div>
   </nav>
 
+  <% if notice %>
+    <div id="notice-wrapper">
+      <p style="color: green"><%= notice %></p>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          document.getElementById('notice-wrapper').style.display = 'none';
+        }, 1500);
+      });
+    </script>
+  <% end %>
+
   <div class="container mt-4">
     <%= yield %>
   </div>
