@@ -14,8 +14,8 @@
   <%= link_to "Add flights", new_itinerary_flight_path(@itinerary), class: "btn btn-primary mb-4" %>
 
   <div class="list-group mt-3">
-    <% @itinerary.flights.each do |flight| %>
-      <div class="list-group-item">
+    <% @itinerary.flights.each_with_index do |flight, index| %>
+      <div class="list-group-item" style="background-color: <%= generate_light_color(index) %>;">
         <div class="d-flex justify-content-between">
           <div>
             <p><strong>Flight Number:</strong> <%= flight.flight_number %></p>
