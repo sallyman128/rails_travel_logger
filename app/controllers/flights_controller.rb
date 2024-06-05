@@ -51,10 +51,11 @@ class FlightsController < ApplicationController
 
   # DELETE /flights/1 or /flights/1.json
   def destroy
+    itinerary = @flight.itinerary
     @flight.destroy!
 
     respond_to do |format|
-      format.html { redirect_to flights_url, notice: "Flight was successfully destroyed." }
+      format.html { redirect_to itinerary_path(itinerary), notice: "Flight was successfully destroyed." }
       format.json { head :no_content }
     end
   end
