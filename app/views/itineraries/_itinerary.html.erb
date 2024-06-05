@@ -1,11 +1,31 @@
-<div id="<%= dom_id itinerary %>" class="container list-group list-group-horizontal" style="width: 100%;">
-  <p class="list-group-item">
-    <strong>Name:</strong>
-    <%= itinerary.name %>
-  </p>
+<div id="<%= dom_id(@itinerary) %>" class="container">
+  <div class="list-group list-group-horizontal" style="width: 100%;">
+    <p class="list-group-item">
+      <strong>Name:</strong>
+      <%= @itinerary.name %>
+    </p>
 
-  <p class="list-group-item">
-    <strong>Flights:</strong>
-    <%= itinerary.flights.size %>
-  </p>
+    <p class="list-group-item">
+      <strong>Flights:</strong>
+      <%= @itinerary.flights.size %>
+    </p>
+  </div>
+
+  <%= link_to "Add flights", new_itinerary_flight_path(@itinerary), class: "btn btn-primary mb-4" %>
+
+  <div class="list-group mt-3">
+    <% @itinerary.flights.each do |flight| %>
+      <div class="list-group-item">
+        <div class="d-flex justify-content-between">
+          <div>
+            <p><strong>Flight Number:</strong> <%= flight.flight_number %></p>
+          </div>
+          <div>
+            <p><strong>Departure:</strong> <%= flight.departure_time.strftime('%B %d, %Y') %></p>
+            <p><strong>Arrival:</strong> <%= flight.arrival_time.strftime('%B %d, %Y') %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

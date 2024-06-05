@@ -3,9 +3,7 @@
 <%= render @itinerary %>
 
 <div>
-  <%= link_to "Add flights", new_itinerary_flight_path(@itinerary) %> |
   <%= link_to "Edit this itinerary", edit_itinerary_path(@itinerary) %> |
   <%= link_to "Back to itineraries", itineraries_path %>
-
   <%= button_to "Destroy this itinerary", @itinerary, method: :delete %>
 </div>
