@@ -7,4 +7,18 @@ class Flight < ApplicationRecord
   validates :arrival_time, presence: true
   validates :origin, presence: true
   validates :destination, presence: true
+
+  after_save :update_itinerary_dates
+  after_destroy :update_itinerary_dates
+
+  private
+
+  def update_itinerary_dates
+    return unless itinerary
+
+    itinerary_start_date = itinerary.flights.minimum(:departure_time)
+    itinerary_end_date = itinerary.flights.maximum(:arrival_time)
+
+    itinerary.update(start_date: itinerary_start_date, end_date: itinerary_end_date)
+  end
 end
