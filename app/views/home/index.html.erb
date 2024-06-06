@@ -1,8 +1,8 @@
 <h1>Welcome to RailsTravelLogger</h1>
 <p>
   <% if user_signed_in? %>
-    Logged in as <%= current_user.email %>.
+    <%= render "signed_in" %>
   <% else %>
-    <%= link_to 'Sign Up', new_user_registration_path %> or <%= link_to 'Login', new_user_session_path %>.
+    <%= render "not_signed_in" %>
   <% end %>
 </p>
