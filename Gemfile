@@ -16,6 +16,7 @@ gem "devise"
 gem "bootstrap", "~> 5.0.2"
 gem "jquery-rails"
 gem "hotwire-rails"
+gem 'popper_js'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
