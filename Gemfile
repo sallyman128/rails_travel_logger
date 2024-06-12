@@ -16,6 +16,8 @@ gem "devise"
 gem "jquery-rails"
 gem "hotwire-rails"
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'bootstrap'
+gem 'cssbundling-rails'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
