@@ -1,20 +1,4 @@
 @import "bootstrap";
-
-// Ensure the logout link looks like other nav links
-.navbar-nav {
-	.logout-link {
-		color: $navbar-light-color;
-		cursor: pointer;
-		padding: 0.5rem 1rem;
-		text-decoration: none;
-		
-		&:hover,
-		&:focus {
-		color: darken($navbar-light-color, 15%);
-		text-decoration: none;
-		}
-	}
-}
   
 // Add padding around the application
 body {
