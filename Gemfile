@@ -18,6 +18,7 @@ gem "jquery-rails"
 gem "hotwire-rails"
 gem 'popper_js', '~> 2.11.8'
 gem "dartsass-sprockets"
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
