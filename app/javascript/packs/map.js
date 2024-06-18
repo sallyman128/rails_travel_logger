@@ -26,7 +26,7 @@ document.addEventListener('turbo:load', () => {
       color: '#FF0000' // Red
     },
     {
-      id: 2,
+      id: 4,
       coordinates: [
         [-0.1276, 51.5074], // London
         [2.3522, 48.8566], // Paris
@@ -38,6 +38,21 @@ document.addEventListener('turbo:load', () => {
 
   map.on('load', () => {
     itineraries.forEach(itinerary => {
+      // Add click event listener
+      map.on('click', `route-${itinerary.id}`, (e) => {
+        window.location.href = `/itineraries/${itinerary.id}`;
+      });
+
+      // Change the cursor to a pointer when the mouse is over the itinerary line
+      map.on('mouseenter', `route-${itinerary.id}`, () => {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+
+      // Change it back to default when it leaves
+      map.on('mouseleave', `route-${itinerary.id}`, () => {
+        map.getCanvas().style.cursor = '';
+      });
+
       map.addLayer({
         id: `route-${itinerary.id}`,
         type: 'line',
