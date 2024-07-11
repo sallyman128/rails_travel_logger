@@ -40,9 +40,7 @@
 
             </div>
 
-            <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-              <span class="mb-0">Dont have an account? </span> <%= link_to "Sign up", new_registration_path(resource_name), class: "text-white-50 fw-bold" %><br />
-            <% end %>
+            <span class="mb-0">Dont have an account? </span> <%= link_to "Sign up", new_registration_path(resource_name), class: "text-white-50 fw-bold" %><br />
 
           </div>
         </div>
