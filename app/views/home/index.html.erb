@@ -1,8 +1,6 @@
 <h1>Welcome to RailsTravelLogger</h1>
-<p>
-  <% if user_signed_in? %>
-    <%= render "signed_in" %>
-  <% else %>
-    <%= render "not_signed_in" %>
-  <% end %>
-</p>
+<div
+ id='map' 
+ style='width: 100%; height: 500px;' 
+ data-mapbox-access-token='<%= ENV['MAPBOX_ACCESS_TOKEN'] %>'>
+</div>
