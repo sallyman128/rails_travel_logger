@@ -8,11 +8,12 @@ document.addEventListener("turbo:load", () => {
   mapboxgl.accessToken = accessToken;
 
   const map = new mapboxgl.Map({
-    container: "map", // container ID
-    style: "mapbox://styles/mapbox/streets-v11", // map style
-    center: [-74.5, 40], // starting position [lng, lat]
-    zoom: 9, // starting zoom
-  });
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    zoom: 1.5,
+    center: [30, 50],
+    projection: 'globe'
+    });
 
   // Example itinerary data
   const itineraries = [
@@ -37,6 +38,7 @@ document.addEventListener("turbo:load", () => {
   ];
 
   map.on("load", () => {
+    map.setFog({});
     itineraries.forEach((itinerary) => {
       // Add click event listener
       map.on("click", `route-${itinerary.id}`, (e) => {
