@@ -1,38 +1,43 @@
 @import "bootstrap";
 
-#map { position: absolute; top: 0; bottom: 0; width: 100%; }
-  
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
 // Add padding around the application
 body {
-	padding-left: 20px;
-	padding-right: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 // Custom styles for the itinerary cards
 .card {
-	border: 1px solid #ddd;
-	border-radius: 5px;
-	transition: all 0.3s ease;
-	text-decoration: none;
-	color: inherit;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
 
-	&:hover {
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	}
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .card-title {
-	color: black;
+  color: black;
 }
 
 .card-link {
-	text-decoration: none;
+  text-decoration: none;
 
-	&:hover .card {
-			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	}
+  &:hover .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .btn-primary {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }

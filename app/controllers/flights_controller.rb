@@ -1,6 +1,6 @@
 class FlightsController < ApplicationController
-  before_action :set_flight, only: %i[ show edit update destroy ]
-  before_action :set_itinerary, only: %i[ new create edit update]
+  before_action :set_flight, only: %i[show edit update destroy]
+  before_action :set_itinerary, only: %i[new create edit update]
 
   # GET /flights or /flights.json
   def index
@@ -8,8 +8,7 @@ class FlightsController < ApplicationController
   end
 
   # GET /flights/1 or /flights/1.json
-  def show
-  end
+  def show; end
 
   # GET /flights/new
   def new
@@ -17,8 +16,7 @@ class FlightsController < ApplicationController
   end
 
   # GET /flights/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /flights or /flights.json
   def create
@@ -27,7 +25,7 @@ class FlightsController < ApplicationController
 
     respond_to do |format|
       if @flight.save
-        format.html { redirect_to itinerary_url(@itinerary), notice: "Flight was successfully created." }
+        format.html { redirect_to itinerary_url(@itinerary), notice: 'Flight was successfully created.' }
         format.json { render :show, status: :created, location: @flight }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +38,9 @@ class FlightsController < ApplicationController
   def update
     respond_to do |format|
       if @flight.update(flight_params)
-        format.html { redirect_to itinerary_flight_url(@itinerary, @flight), notice: "Flight was successfully updated." }
+        format.html do
+          redirect_to itinerary_flight_url(@itinerary, @flight), notice: 'Flight was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @flight }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,23 +55,24 @@ class FlightsController < ApplicationController
     @flight.destroy!
 
     respond_to do |format|
-      format.html { redirect_to itinerary_path(itinerary), notice: "Flight was successfully destroyed." }
+      format.html { redirect_to itinerary_path(itinerary), notice: 'Flight was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_flight
-      @flight = Flight.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def flight_params
-      params.require(:flight).permit(:flight_number, :departure_time, :arrival_time, :origin, :destination)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_flight
+    @flight = Flight.find(params[:id])
+  end
 
-    def set_itinerary
-      @itinerary = Itinerary.find(params[:itinerary_id])
-    end
+  # Only allow a list of trusted parameters through.
+  def flight_params
+    params.require(:flight).permit(:flight_number, :departure_time, :arrival_time, :origin, :destination)
+  end
+
+  def set_itinerary
+    @itinerary = Itinerary.find(params[:itinerary_id])
+  end
 end
