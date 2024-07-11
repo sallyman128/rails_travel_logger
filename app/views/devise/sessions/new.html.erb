@@ -13,9 +13,10 @@
               <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
               <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {  class: 'needs-validation', novalidate: true }) do |f| %>
+  
                 <div class="form-group">
-                <%= f.label :email, class: 'form-label' %>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', required: true, pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" %>
+                  <%= f.label :email, class: 'form-label' %>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', required: true, pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" %>
                   <div class="invalid-feedback">
                     Please enter a valid email address.
                   </div>
