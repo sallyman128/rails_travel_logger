@@ -1,10 +1,20 @@
 class FlightsController < ApplicationController
   before_action :set_flight, only: %i[show edit update destroy]
-  before_action :set_itinerary, only: %i[new create edit update index]
+  before_action :set_itinerary, only: %i[new create edit update]
 
   # GET /flights or /flights.json
   def index
-    @flights = @itinerary.flights
+    if params[:itinerary_id]
+      itinerary = Itinerary.find(params[:itinerary_id])
+      flights = itinerary.flights
+    else
+      flights = current_user.flights
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: flights }
+    end
   end
 
   # GET /flights/1 or /flights/1.json
