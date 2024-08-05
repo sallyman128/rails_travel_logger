@@ -60,4 +60,21 @@ body {
 
 .navbar-dim {
   background-color: rgba(0, 0, 0, 0.1);
+  color: white !important;
+}
+
+.navbar-dim .nav-link,
+.navbar-dim .navbar-brand,
+.navbar-dim .nav-item .dropdown-toggle {
+  color: white !important;
+}
+
+.navbar-dim .nav-link:hover,
+.navbar-dim .navbar-brand:hover,
+.navbar-dim .nav-item .dropdown-toggle:hover {
+  color: rgba(255, 255, 255, 0.8) !important; /* Slightly dimmer white on hover */
+}
+
+.navbar-dim .dropdown-menu .dropdown-item {
+  color: black; /* Adjust if needed, for dropdown items */
 }
