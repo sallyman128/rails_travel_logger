@@ -1,4 +1,5 @@
 class FlightsController < ApplicationController
+  include ApplicationHelper
   before_action :set_flight, only: %i[show edit update destroy]
   before_action :set_itinerary, only: %i[new create edit update]
 
@@ -8,7 +9,9 @@ class FlightsController < ApplicationController
       itinerary = Itinerary.find(params[:itinerary_id])
       flights = itinerary.flights
     else
-      flights = current_user.flights
+      flights = current_user.flights.map do |flight|
+        flight.attributes.merge("color" => generate_flight_color(flight.itinerary_id))
+      end
     end
 
     respond_to do |format|

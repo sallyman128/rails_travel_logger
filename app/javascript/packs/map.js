@@ -22,7 +22,6 @@ document.addEventListener("turbo:load", () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const json = await response.json();
-      console.log(json); // Ensure the data is being logged
       return json;
     } catch (error) {
       console.error("Error fetching itineraries:", error);
@@ -40,7 +39,7 @@ document.addEventListener("turbo:load", () => {
       
       // Add click event listener
       map.on("click", `route-${flight.id}`, (e) => {
-        window.location.href = `/itineraries/${flight.id}`;
+        window.location.href = `/itineraries/${flight.itinerary_id}`;
       });
 
       // Change the cursor to a pointer when the mouse is over the itinerary line
@@ -72,7 +71,7 @@ document.addEventListener("turbo:load", () => {
           "line-cap": "round",
         },
         paint: {
-          "line-color": "black",
+          "line-color": flight.color,
           "line-width": 4,
         },
       });
