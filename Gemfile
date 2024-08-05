@@ -18,6 +18,7 @@ gem 'sprockets-rails'
 gem 'sqlite3', '~> 1.4'
 gem 'stimulus-rails'
 gem 'turbo-rails'
+gem 'faker'
 gem 'tzinfo-data', platforms: %i[mswin mswin64 mingw x64_mingw jruby]
 
 group :development, :test do
