@@ -22,12 +22,12 @@
 
   <div class="mb-3">
     <%= form.label :origin, class: 'form-label text-light' %>
-    <%= form.text_field :origin, class: 'form-control' %>
+    <%= form.select :origin, options_for_select(airport_options), { include_blank: 'Select an airport' }, class: 'form-control' %>
   </div>
 
   <div class="mb-3">
     <%= form.label :destination, class: 'form-label text-light' %>
-    <%= form.text_field :destination, class: 'form-control' %>
+    <%= form.select :destination, options_for_select(airport_options), { include_blank: 'Select an airport' }, class: 'form-control' %>
   </div>
 
   <div class="mb-3">
@@ -36,6 +36,6 @@
   </div>
 
   <div class="mb-3">
-    <%= form.submit "Submit", class: "btn btn-primary" %>
+    <%= form.submit "Submit", class: "btn btn-primary w-100" %>
   </div>
 <% end %>
