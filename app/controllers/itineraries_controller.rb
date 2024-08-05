@@ -4,6 +4,10 @@ class ItinerariesController < ApplicationController
   # GET /itineraries or /itineraries.json
   def index
     @itineraries = current_user.itineraries
+    respond_to do |format|
+      format.html
+      format.json { render json: @itineraries }
+    end
   end
 
   # GET /itineraries/1 or /itineraries/1.json
