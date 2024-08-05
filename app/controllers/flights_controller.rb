@@ -23,13 +23,19 @@ class FlightsController < ApplicationController
     @flight = @itinerary.flights.build(flight_params)
     @flight.user_id = @itinerary.user_id
 
+
     respond_to do |format|
-      if @flight.save
-        format.html { redirect_to itinerary_url(@itinerary), notice: 'Flight was successfully created.' }
-        format.json { render :show, status: :created, location: @flight }
+      if find_airport_coordinates(@flight)
+        if @flight.save
+          format.html { redirect_to itinerary_url(@itinerary), notice: 'Flight was successfully created.' }
+          format.json { render :show, status: :created, location: @flight }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @flight.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @flight.errors, status: :unprocessable_entity }
+        @flight.errors.add(:base, 'Could not find airport coordinates.')
+        render :new
       end
     end
   end
@@ -74,5 +80,21 @@ class FlightsController < ApplicationController
 
   def set_itinerary
     @itinerary = Itinerary.find(params[:itinerary_id])
+  end
+
+  def find_airport_coordinates(flight)
+    airports = JSON.parse(File.read(Rails.root.join('public', 'airports.json')))
+    origin_airport = airports['data'].find { |airport| airport['iata_code'] == flight.origin }
+    destination_airport = airports['data'].find { |airport| airport['iata_code'] == flight.destination }
+
+    if origin_airport && destination_airport
+      flight.departure_latitude = origin_airport['latitude']
+      flight.departure_longitude = origin_airport['longitude']
+      flight.arrival_latitude = destination_airport['latitude']
+      flight.arrival_longitude = destination_airport['longitude']
+      return true
+    else
+      return false
+    end
   end
 end
