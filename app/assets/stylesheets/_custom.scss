@@ -82,3 +82,7 @@ body {
 .navbar-dim .dropdown-menu .dropdown-item {
   color: black; /* Adjust if needed, for dropdown items */
 }
+
+.form-text.text-light {
+  color: #d2d3c8 !important; /* Ensure the "characters minimum" line is white */
+}

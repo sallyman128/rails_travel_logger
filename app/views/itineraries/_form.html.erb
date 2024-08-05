@@ -1,22 +1,22 @@
-<%= form_with(model: itinerary) do |form| %>
+<%= form_with(model: itinerary, local: true, class: 'form') do |form| %>
   <% if itinerary.errors.any? %>
-    <div style="color: red">
+    <div class="alert alert-danger">
       <h2><%= pluralize(itinerary.errors.count, "error") %> prohibited this itinerary from being saved:</h2>
 
       <ul>
-        <% itinerary.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% itinerary.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.submit 'Submit', class: "btn btn-primary" %>
+  <div class="mb-3">
+    <%= form.submit 'Submit', class: 'btn btn-primary' %>
   </div>
 <% end %>
