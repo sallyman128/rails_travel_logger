@@ -15,48 +15,46 @@ document.addEventListener("turbo:load", () => {
     projection: 'globe'
     });
 
-  // Example itinerary data
-  const itineraries = [
-    {
-      id: 1,
-      coordinates: [
-        [-74.006, 40.7128], // New York
-        [-87.6298, 41.8781], // Chicago
-        [-118.2437, 34.0522], // Los Angeles
-      ],
-      color: "#FF0000", // Red
-    },
-    {
-      id: 4,
-      coordinates: [
-        [-0.1276, 51.5074], // London
-        [2.3522, 48.8566], // Paris
-        [13.405, 52.52], // Berlin
-      ],
-      color: "#0000FF", // Blue
-    },
-  ];
+  const fetchFlights = async () => {
+    try {
+      const response = await fetch("/flights.json");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const json = await response.json();
+      console.log(json); // Ensure the data is being logged
+      return json;
+    } catch (error) {
+      console.error("Error fetching itineraries:", error);
+      return [];
+    }
+  };
 
-  map.on("load", () => {
-    map.setFog({});
-    itineraries.forEach((itinerary) => {
+  map.on("load", async () => {
+    const flights = await fetchFlights();
+    flights.forEach(async (flight) => {
+      const coordinates = [
+        [flight.departure_longitude, flight.departure_latitude],
+        [flight.arrival_longitude, flight.arrival_latitude]
+      ]
+      
       // Add click event listener
-      map.on("click", `route-${itinerary.id}`, (e) => {
-        window.location.href = `/itineraries/${itinerary.id}`;
+      map.on("click", `route-${flight.id}`, (e) => {
+        window.location.href = `/itineraries/${flight.id}`;
       });
 
       // Change the cursor to a pointer when the mouse is over the itinerary line
-      map.on("mouseenter", `route-${itinerary.id}`, () => {
+      map.on("mouseenter", `route-${flight.id}`, () => {
         map.getCanvas().style.cursor = "pointer";
       });
 
       // Change it back to default when it leaves
-      map.on("mouseleave", `route-${itinerary.id}`, () => {
+      map.on("mouseleave", `route-${flight.id}`, () => {
         map.getCanvas().style.cursor = "";
       });
 
       map.addLayer({
-        id: `route-${itinerary.id}`,
+        id: `route-${flight.id}`,
         type: "line",
         source: {
           type: "geojson",
@@ -65,7 +63,7 @@ document.addEventListener("turbo:load", () => {
             properties: {},
             geometry: {
               type: "LineString",
-              coordinates: itinerary.coordinates,
+              coordinates: coordinates,
             },
           },
         },
@@ -74,7 +72,7 @@ document.addEventListener("turbo:load", () => {
           "line-cap": "round",
         },
         paint: {
-          "line-color": itinerary.color,
+          "line-color": "black",
           "line-width": 4,
         },
       });
