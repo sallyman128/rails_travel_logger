@@ -1,10 +1,10 @@
 class FlightsController < ApplicationController
   before_action :set_flight, only: %i[show edit update destroy]
-  before_action :set_itinerary, only: %i[new create edit update]
+  before_action :set_itinerary, only: %i[new create edit update index]
 
   # GET /flights or /flights.json
   def index
-    @flights = Flight.all
+    @flights = @itinerary.flights
   end
 
   # GET /flights/1 or /flights/1.json
