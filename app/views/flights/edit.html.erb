@@ -5,6 +5,6 @@
 <br>
 
 <div>
-  <%= link_to "Back to itinerary", @itinerary %>
-  <%= button_to "Destroy this flight", itinerary_flight_path(@flight), method: :delete %>
+  <%= link_to "Back to itinerary", @itinerary, class: "btn btn-primary" %>
+  <%= button_to "Destroy this flight", itinerary_flight_path(@flight), method: :delete, class: "btn btn-danger" %>
 </div>

@@ -1,6 +1,6 @@
 <%= render @flight %>
 
 <div>
-  <%= link_to "Edit this flight", edit_itinerary_flight_path(@flight.itinerary, @flight) %> |
-  <%= link_to "Back to itinerary", itinerary_path(@flight.itinerary) %>
+  <%= link_to "Edit this flight", edit_itinerary_flight_path(@flight.itinerary, @flight), class: 'btn btn-primary mb-4' %>
+  <%= link_to "Back to itinerary", itinerary_path(@flight.itinerary), class: 'btn btn-primary mb-4' %>
 </div>
