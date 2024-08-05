@@ -8,6 +8,9 @@ class Flight < ApplicationRecord
   validates :origin, presence: true
   validates :destination, presence: true
 
+  validates :departure_latitude, :departure_longitude, presence: true
+  validates :arrival_latitude, :arrival_longitude, presence: true
+
   after_save :update_itinerary_dates
   after_destroy :update_itinerary_dates
 
