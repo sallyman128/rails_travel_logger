@@ -21,5 +21,10 @@ test:
   database: storage/test.sqlite3
 
 production:
-  <<: *default
-  database: storage/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: your_production_database_name
+  username: your_database_user
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: localhost
