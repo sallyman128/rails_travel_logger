@@ -19,7 +19,7 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'faker'
 gem 'tzinfo-data', platforms: %i[mswin mswin64 mingw x64_mingw jruby]
-gem 'sqlite3', '~> 1.4'
+gem 'pg', '~> 1.1'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
