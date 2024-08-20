@@ -11,18 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_08_05_200820) do
-  # These are extensions that must be enabled in order to support this database
-
   create_table "flights", force: :cascade do |t|
     t.string "flight_number"
     t.datetime "departure_time"
     t.datetime "arrival_time"
     t.string "origin"
     t.string "destination"
-    t.bigint "user_id", null: false
-    t.bigint "itinerary_id", null: false
-    t.bigint "user_id", null: false
-    t.bigint "itinerary_id", null: false
+    t.integer "user_id", null: false
+    t.integer "itinerary_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "departure_latitude"
@@ -35,8 +31,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_05_200820) do
 
   create_table "itineraries", force: :cascade do |t|
     t.string "name"
-    t.bigint "user_id", null: false
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "start_date"
